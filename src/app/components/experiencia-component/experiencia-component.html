@@ -1,0 +1,47 @@
+<form [formGroup]="form">
+  <div>
+    <label>Empresa Principal:</label>
+    <input formControlName="empresa" placeholder="Empresa Atual" />
+  </div>
+
+  <h3>Experiências Anteriores (Total: {{ experiencias.length }})</h3>
+
+  <div formArrayName="experiencias">
+    @for (exp of experiencias.controls; track exp; let i = $index) {
+      <div [formGroupName]="i">
+        <h4>Experiência {{ i + 1 }}</h4>
+
+        <div>
+          <label>Empresa:</label>
+          <input formControlName="empresa" placeholder="Nome da empresa" />
+        </div>
+
+        <div>
+          <label>Cargo:</label>
+          <input formControlName="cargo" placeholder="Seu cargo" />
+        </div>
+
+        <div>
+          <label>Ano de Início:</label>
+          <input type="number" formControlName="anoInicio" placeholder="Ex: 2018" />
+
+          @if (exp.get('anoInicio')?.errors?.['min'] && exp.get('anoInicio')?.touched) {
+            <span style="color: red">O ano deve ser maior ou igual a 1990.</span>
+          }
+        </div>
+
+        <div>
+          <label>Ano de Fim:</label>
+          <input type="number" formControlName="anoFim" placeholder="Ex: 2022" />
+        </div>
+
+        <button type="button" (click)="removerExperiencia(i)">Remover esta experiência</button>
+      </div>
+    }
+  </div>
+
+  <button type="button" (click)="adicionarExperiencia()">Adicionar Nova Experiência</button>
+
+  <hr />
+  <button type="submit" [disabled]="form.invalid">Salvar Tudo</button>
+</form>
