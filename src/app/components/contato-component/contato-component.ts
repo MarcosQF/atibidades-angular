@@ -8,6 +8,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './contato-component.css',
 })
 export class ContatoComponent {
+
   contato = {
     nome: '',
     email: '',
