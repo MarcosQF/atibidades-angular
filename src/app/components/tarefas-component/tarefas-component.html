@@ -1,0 +1,24 @@
+<form [formGroup]="tarefaForm" (ngSubmit)="enviarTarefa()">
+  <div>
+    <label for="titulo">Titulo: </label>
+    <input id="titulo" formControlName="titulo" placeholder="Tarefa Nova" />
+    @if (titulo?.invalid && titulo?.touched) {
+      @if (titulo?.errors?.['required']) {
+        <span>O titulo é obrigatório.</span>
+      }
+    }
+  </div>
+
+  <button type="submit" [disabled]="tarefaForm.invalid">Enviar</button>
+</form>
+
+
+<h3>Minhas Tarefas</h3>
+<ul>
+  @for (tarefa of tarefas(); track tarefa.titulo) {
+    <li>{{ tarefa.titulo }}</li>
+  } @empty {
+    <span>Nenhuma tarefa cadastrada</span>
+  }
+</ul>
+
