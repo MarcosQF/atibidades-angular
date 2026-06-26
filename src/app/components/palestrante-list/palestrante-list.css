@@ -1,0 +1,47 @@
+.lista-palestrantes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f1f1f1;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+  color: #1a1a1a;
+  font-size: 1.25rem;
+}
+
+.card p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.card strong {
+  color: #333;
+}
+
+/* Opcional: Adicionar uma borda decorativa superior */
+.card::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 4px;
+  background: #6200ea; /* Cor de destaque (ex: Roxo Angular) */
+  border-radius: 2px;
+  margin-bottom: 15px;
+}

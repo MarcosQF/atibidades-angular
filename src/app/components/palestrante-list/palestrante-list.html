@@ -1,0 +1,19 @@
+<section>
+  <h2>Palestrantes</h2>
+
+  @if (loading()) {
+    <p>Carregando palestrantes...</p>
+  } @else {
+    <div class="lista-palestrantes">
+      @for (palestrante of palestrantes(); track palestrante.id) {
+        <div class="card">
+          <h3>{{ palestrante.nome }}</h3>
+          <p>{{ palestrante.cargo }} - {{ palestrante.empresa }}</p>
+          <p><strong>Tema:</strong> {{ palestrante.temaPalestra }}</p>
+        </div>
+      } @empty {
+        <p>Nenhum palestrante encontrado.</p>
+      }
+    </div>
+  }
+</section>
