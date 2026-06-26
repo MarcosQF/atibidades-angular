@@ -1,6 +1,17 @@
 <section>
   <h2>Palestrantes</h2>
 
+  <div class="filter-container">
+    <input
+      [(ngModel)]="termoBusca"
+      placeholder="Filtrar por empresa..."
+      (keyup.enter)="filtrarPorEmpresa()"
+    />
+
+    <button (click)="filtrarPorEmpresa()">Buscar</button>
+    <button (click)="termoBusca.set(''); carregarPalestrantes()">Limpar</button>
+  </div>
+
   @if (loading()) {
     <p>Carregando palestrantes...</p>
   } @else {
